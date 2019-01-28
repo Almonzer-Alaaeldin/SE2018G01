@@ -1,0 +1,40 @@
+#slider{
+	margin-bottom: 0;
+	padding: 0;
+	background-color: lavender;
+}
+
+h1{
+	color: black;
+}
+
+p{
+	color: black;
+}
+
+.container{
+	margin-top:30px;
+	margin-bottom: 25px;
+}
+
+.row{
+	margin-bottom: 5px;
+}
+
+.col-sm-12{
+	background-color: lavender;
+}
+
+#footer{
+	margin-bottom: 0;
+	background-color: rgb(32,32,32);
+}
+
+#footer p {
+	color: white;
+}
+img {
+	 height: 400px;
+	 width: 98%;
+	 filter: blur(3px) contrast(0.5); 
+}
