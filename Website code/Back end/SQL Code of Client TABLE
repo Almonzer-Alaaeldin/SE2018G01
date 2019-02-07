@@ -1,0 +1,15 @@
+USE saw;
+Create Table client_profile(
+    client_id INT(6) NOT NULL AUTO_INCREMENT UNIQUE KEY,
+    Name varchar(128) NOT NULL,
+    Email varchar(128) NOT NULL,
+    Phone int(16) NOT NULL,
+    Mission varchar(128) NOT NULL,
+    Vision varchar(128) NOT NULL,
+    Company_Description varchar(255) NOT NULL,
+    Needed_Position varchar(255) NOT NULL,
+    Job_Requirements varchar(255) NOT NULL,
+    Selection_Phases varchar(255) NOT NULL,
+    PW varchar(128) NOT NULL,
+    RePW varchar(128) NOT NULL
+    );
