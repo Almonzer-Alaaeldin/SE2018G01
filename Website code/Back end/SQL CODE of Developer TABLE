@@ -1,0 +1,18 @@
+CREATE DATABASE saw;
+USE saw;
+Create Table developer_profile(
+    developer_id INT(6) NOT NULL AUTO_INCREMENT UNIQUE KEY,
+    NAME varchar(128) NOT NULL,
+    Age INT(3) NOT NULL,
+    Country VARCHAR(30) NOT NULL,
+    Years_of_exp INT(3) NOT NULL,
+    Fields_of_Expertise varchar(255) NOT NULL,
+    Skills varchar(255) NOT NULL,
+    Programming_languages_mastered varchar(255) NOT NULL,
+    Working_Hours INT(3) NOT NULL,
+    Payment_per_hour varchar(6) NOT NULL,
+    email varchar(255) NOT NULL,
+    phone_number INT(16) NOT NULL,
+    PASS_WORD varchar(128) NOT NULL,
+    repeat_password varchar(128) NOT NULL
+    );
