@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2019 at 12:49 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Generation Time: Feb 11, 2019 at 01:15 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,37 +19,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `service_web_database`
+-- Database: `seproject`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Table structure for table `accounts`
 --
 
-CREATE TABLE `account` (
+CREATE TABLE `accounts` (
   `id` int(11) NOT NULL,
-  `email` text,
-  `password` text,
-  `type` text,
-  `is_verified` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` mediumtext NOT NULL,
+  `password_hash` mediumtext NOT NULL,
+  `type` mediumtext NOT NULL,
+  `is_verified` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `company`
+-- Table structure for table `companies`
 --
 
-CREATE TABLE `company` (
+CREATE TABLE `companies` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `mission` text NOT NULL,
-  `vision` text NOT NULL,
-  `brief` text NOT NULL,
+  `name` mediumtext NOT NULL,
+  `mission` mediumtext NOT NULL,
+  `vision` mediumtext NOT NULL,
+  `brief` mediumtext NOT NULL,
   `account_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -65,35 +65,35 @@ CREATE TABLE `company_developer` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `developer`
+-- Table structure for table `developers`
 --
 
-CREATE TABLE `developer` (
+CREATE TABLE `developers` (
   `id` int(11) NOT NULL,
-  `name` text NOT NULL,
-  `country` text NOT NULL,
+  `name` text CHARACTER SET latin1 NOT NULL,
+  `country` text CHARACTER SET latin1 NOT NULL,
   `age` int(11) NOT NULL,
   `years_of_exp` int(11) NOT NULL,
-  `field` text NOT NULL,
-  `payment` text NOT NULL,
-  `working_hrs` text NOT NULL,
+  `field` text CHARACTER SET latin1 NOT NULL,
+  `payment` text CHARACTER SET latin1 NOT NULL,
+  `working_hrs` text CHARACTER SET latin1 NOT NULL,
   `account_id` int(11) NOT NULL,
-  `programming_languages` text NOT NULL,
-  `skills` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `programming_languages` text CHARACTER SET latin1 NOT NULL,
+  `skills` text CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `job`
+-- Table structure for table `jobs`
 --
 
-CREATE TABLE `job` (
+CREATE TABLE `jobs` (
   `id` int(11) NOT NULL,
-  `requirement` text NOT NULL,
-  `selection_phase` text NOT NULL,
+  `requirement` mediumtext NOT NULL,
+  `selection_phase` mediumtext NOT NULL,
   `company_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -106,20 +106,31 @@ CREATE TABLE `job_developer` (
   `developer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `AccountID` int(11) NOT NULL,
+  `Time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `account`
+-- Indexes for table `accounts`
 --
-ALTER TABLE `account`
+ALTER TABLE `accounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `company`
+-- Indexes for table `companies`
 --
-ALTER TABLE `company`
+ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `casda` (`account_id`);
 
@@ -131,16 +142,16 @@ ALTER TABLE `company_developer`
   ADD KEY `i` (`developer_id`);
 
 --
--- Indexes for table `developer`
+-- Indexes for table `developers`
 --
-ALTER TABLE `developer`
+ALTER TABLE `developers`
   ADD PRIMARY KEY (`id`),
   ADD KEY `v` (`account_id`);
 
 --
--- Indexes for table `job`
+-- Indexes for table `jobs`
 --
-ALTER TABLE `job`
+ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK` (`company_id`);
 
@@ -156,27 +167,27 @@ ALTER TABLE `job_developer`
 --
 
 --
--- AUTO_INCREMENT for table `account`
+-- AUTO_INCREMENT for table `accounts`
 --
-ALTER TABLE `account`
+ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `company`
+-- AUTO_INCREMENT for table `companies`
 --
-ALTER TABLE `company`
+ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `developer`
+-- AUTO_INCREMENT for table `developers`
 --
-ALTER TABLE `developer`
+ALTER TABLE `developers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `job`
+-- AUTO_INCREMENT for table `jobs`
 --
-ALTER TABLE `job`
+ALTER TABLE `jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -184,36 +195,36 @@ ALTER TABLE `job`
 --
 
 --
--- Constraints for table `company`
+-- Constraints for table `companies`
 --
-ALTER TABLE `company`
-  ADD CONSTRAINT `casda` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `companies`
+  ADD CONSTRAINT `casda` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `company_developer`
 --
 ALTER TABLE `company_developer`
-  ADD CONSTRAINT `i` FOREIGN KEY (`developer_id`) REFERENCES `developer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `n` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `i` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `n` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `developer`
+-- Constraints for table `developers`
 --
-ALTER TABLE `developer`
-  ADD CONSTRAINT `v` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `developers`
+  ADD CONSTRAINT `v` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `job`
+-- Constraints for table `jobs`
 --
-ALTER TABLE `job`
-  ADD CONSTRAINT `FK` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `jobs`
+  ADD CONSTRAINT `FK` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `job_developer`
 --
 ALTER TABLE `job_developer`
-  ADD CONSTRAINT `b` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `y` FOREIGN KEY (`developer_id`) REFERENCES `developer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `b` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `y` FOREIGN KEY (`developer_id`) REFERENCES `developers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
