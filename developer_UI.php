@@ -56,7 +56,7 @@
                     </form>
                     
                     <form>
-                        <input type="button" value="Delete Profile" onclick="window.location.href='#'" />
+                        <input type="button" value="Delete Profile" onclick="window.location.href='deletedevprof.php'" />
                     </form>
 
 
