@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2019 at 01:15 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Feb 13, 2019 at 05:41 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `seproject`
+-- Database: `service_web_database`
 --
 
 -- --------------------------------------------------------
@@ -36,6 +36,14 @@ CREATE TABLE `accounts` (
   `is_verified` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `email`, `password_hash`, `type`, `is_verified`) VALUES
+(12, 'topmail78@yahoo.com', '$2y$10$WmVQlexwZ1fNIuuUUnNoJe63iBrlRWl0WnXc.8L0FMSFgtmXGNu.m', 'company', 0),
+(13, 'topmail_1@yahoo.com', '$2y$10$HZ0H9OK32Min6JCRjP7fHu/11PCuKx2qorQNKcRwa0r7lqOWSod3m', 'company', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +58,14 @@ CREATE TABLE `companies` (
   `brief` mediumtext NOT NULL,
   `account_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `companies`
+--
+
+INSERT INTO `companies` (`id`, `name`, `mission`, `vision`, `brief`, `account_id`) VALUES
+(9, 'olx', 'The mission is to improve lives by providing local communities a vibrant online market where people can connect with each other. ', 'With OLX everybody wins. Buyers win by finding great deals and sellers win by turning unused items into cash.', 'OLX Group is a world-leading network of online classifieds platforms present in 45 countries across six continents. The mission is to improve lives by providing local communities a vibrant online market where people can connect with each other. On the OLX platforms, people can buy and sell used goods, services, cars and properties.', 12),
+(10, 'Apple', 'Apple designs Macs, the best personal computers in the world, along with OS X, iLife, iWork and professional software. Apple leads the digital music revolution with its iPods and iTunes online store. Apple has reinvented the mobile phone with its revolutionary iPhone and App store', 'We believe that we are on the face of the earth to make great products and thatâ€™s not changing.', 'Apple Computer Company was founded on April 1, 1976, by Steve Jobs, Steve Wozniak and Ronald Wayne.', 13);
 
 -- --------------------------------------------------------
 
@@ -90,6 +106,7 @@ CREATE TABLE `developers` (
 
 CREATE TABLE `jobs` (
   `id` int(11) NOT NULL,
+  `position` text NOT NULL,
   `requirement` mediumtext NOT NULL,
   `selection_phase` mediumtext NOT NULL,
   `company_id` int(11) NOT NULL
@@ -170,13 +187,13 @@ ALTER TABLE `job_developer`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `developers`
