@@ -23,6 +23,7 @@
         echo "Connection failed: " .$e->getMessage(); 
     }
     $sql="SELECT DISTINCT * FROM accounts JOIN developers ON (developers.account_id='9' and accounts.id='9');" ;
+	 //number 9 is the "$account_id" which will come from the login
     $state=$db->prepare($sql);
     $state->execute();
     $row=$state->fetch(PDO::FETCH_ASSOC);
@@ -63,7 +64,12 @@
                         <p>SKILLS</p>
                         <input class="form-control" type="text" name="skills" value="<?=$row['skills'] ?>" required>
                     </div>
-                </div>
+               
+		    <div class="profile-work">
+                        <p>Programming Lang</p>
+                        <input class="form-control" type="text" name="programming_languages" value="<?=$row['programming_languages'] ?>" required>
+                    </div>
+		</div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
