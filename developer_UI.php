@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-2">
                     <button class="button edit"  >Edit</button>
-                    <button class="button delete" >">Delete</button>
+                    <button class="button delete" >Delete</button>
 
 
                 </div>
@@ -149,12 +149,7 @@
                                     <p><?=$row['field'] ?></p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
