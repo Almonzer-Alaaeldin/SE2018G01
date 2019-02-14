@@ -1,0 +1,68 @@
+.form-group {
+  position: relative;
+	margin: 1em 0 0 !important;
+	transition: margin 800ms;
+}
+
+.form-group.focused > input , .form-group.focused > textarea {
+	margin: 2rem 0 0 !important;
+	transition: margin 800ms;
+}
+
+label:not(.form-check-label):not(.no-effect-label) {
+	font-size: 80%;
+	cursor: text;
+  position: absolute;
+	right: 5px;
+  top: 5px;
+  color: #999;
+  z-index: 10;
+  -webkit-transition: font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+  transition: font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+  transition: transform 500ms ease-out, font-size 500ms ease-out;
+  transition: transform 500ms ease-out, font-size 500ms ease-out, -webkit-transform 500ms ease-out;
+}
+label.form-check-label {
+	cursor: pointer;
+}
+
+.focused label {
+	transform-origin: bottom;
+  -webkit-transform: translateY(-80%);
+          transform: translateY(-80%);
+	color: #444444 !important;
+	font-weight: bold;
+}
+
+input[type=date]:not([aria-valuenow]).hide-value {
+    color: transparent;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=file]), textarea {
+  outline: 0;
+  border: 0;
+  -webkit-box-shadow: 0 1px 0 0 #e5e5e5;
+          box-shadow: 0 1px 0 0 #e5e5e5;
+  -webkit-transition: -webkit-box-shadow 500ms ease-out;
+  transition: -webkit-box-shadow 500ms ease-out;
+  transition: box-shadow 500ms ease-out;
+  transition: box-shadow 500ms ease-out, -webkit-box-shadow 500ms ease-out;
+}
+input:focus:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=file]), textarea:focus {
+  -webkit-box-shadow: 0 2px 0 0 blue !important;
+          box-shadow: 0 2px 0 0 blue !important;
+}
+
+input.filled:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=file]), textarea.filled {
+  -webkit-box-shadow: 0 2px 0 0 lightgreen;
+          box-shadow: 0 2px 0 0 lightgreen;
+}
+
+input.invalid:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=file]), textarea.invalid {
+  -webkit-box-shadow: 0 2px 0 0 red;
+          box-shadow: 0 2px 0 0 red;
+}
+
+label.form-check-label {
+	margin: 0 10px;
+}

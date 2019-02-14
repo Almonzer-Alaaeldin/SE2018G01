@@ -1,0 +1,21 @@
+label.no-effect-label {
+	font-size: 120%;
+	font-weight: bold;
+}
+.form-group-check {
+	padding: 10px;
+	margin: 10px;
+	background: rgba(188,188,188,0.40);
+	border: 1px solid black;
+}
+.card-header > span {
+	color: #d24536;
+}
+.card-header span:hover {
+	cursor: pointer;
+	color: #6d65ae;
+}
+.collapse[data-parent='#accordion'] {
+	background-color: rgba(193,193,193,0.30);
+	transition: background-color 1000ms;
+}
