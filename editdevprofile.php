@@ -23,6 +23,7 @@
         echo "Connection failed: " .$e->getMessage(); 
     }
     $sql="SELECT DISTINCT * FROM accounts JOIN developers ON (developers.account_id='9' and accounts.id='9');" ;
+	 //number 9 is the "$account_id" which will come from the login
     $state=$db->prepare($sql);
     $state->execute();
     $row=$state->fetch(PDO::FETCH_ASSOC);
@@ -35,8 +36,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="profile-head">
-                        <input class="form-control" type="text" name="name" value="<?=$row['name'] ?>" required>
-                        
+                        <input class="form-control" type="text" name="name" value="<?=$row['name'] ?>" required>                     
                         <h6>
                             Developer and Designer
                         </h6>
@@ -49,8 +49,6 @@
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
                             </li>
                         </ul>
-
-
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -62,8 +60,28 @@
                     <div class="profile-work">
                         <p>SKILLS</p>
                         <input class="form-control" type="text" name="skills" value="<?=$row['skills'] ?>" required>
+                    </div>          
+		    <div class="profile-work">
+                        <p>Programming Lang</p>
+                        <input class="form-control"  name="programming_languages" >
+                        <div class="form-group input-group row">
+                            <div class="col">
+                                <input type="checkbox" name="ProgLang[]" value="c++">C++<br>
+                                <input type="checkbox" name="ProgLang[]" value="c#">C#<br>
+                                <input type="checkbox" name="ProgLang[]" value="c">C<br>
+                                <input type="checkbox" name="ProgLang[]" value="python">Python<br>
+                                <input type="checkbox" name="ProgLang[]" value="java">Java<br>
+                            </div>
+                            <div class="col">
+                                <input type="checkbox" name="ProgLang[]" value="js">JavaScript<br>
+                                <input type="checkbox" name="ProgLang[]" value="sql">SQL<br>
+                                <input type="checkbox" name="ProgLang[]" value="perl">Perl<br>
+                                <input type="checkbox" name="ProgLang[]" value="ruby">Ruby<br>
+                                <input type="checkbox" name="ProgLang[]" value="kotlin">Kotlin<br>
+                            </div>
+                        </div> <!-- form-group// -->
                     </div>
-                </div>
+		</div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">

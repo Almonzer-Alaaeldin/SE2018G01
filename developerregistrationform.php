@@ -83,18 +83,10 @@
 </div> <!-- form-group// -->
 <div class="form-group input-group">
  <div class="input-group-prepend">
-   <span class="input-group-text"> <i class="fa fa-info"></i> </span>
-</div>
-<textarea name="Experience" rows="3" cols="42" >
-Your Experience!
-</textarea>
-</div> <!-- form-group// -->
-<!--<div class="form-group input-group">
- <div class="input-group-prepend">
    <span class="input-group-text"> <i class="fa fa-graduation-cap"></i> </span>
 </div>
 <input name="Experience" class="form-control" placeholder="Years of Experience" type="number" min="1" max="15">
-</div>  -->
+</div>  
 <div class="form-group input-group">
  <div class="input-group-prepend">
    <span class="input-group-text"> <i class="fa fa-info"></i> </span>

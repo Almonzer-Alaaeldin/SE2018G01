@@ -24,6 +24,7 @@
     ?>
     <?php
     $sql="SELECT DISTINCT * FROM accounts JOIN developers ON (developers.account_id='9' and accounts.id='9');" ;
+    //number 9 is the "$account_id" which will come from the login
     $state=$db->prepare($sql);
     $state->execute();
     $row=$state->fetch(PDO::FETCH_ASSOC);
@@ -39,7 +40,6 @@
                         <h6>
                             Developer and Designer
                         </h6>
-                        <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -51,8 +51,13 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button class="button edit"  >Edit</button>
-                    <button class="button delete" >">Delete</button>
+                    <form>
+                        <input type="button" value="Edit Profile" onclick="window.location.href='editdevprofile.php'" />
+                    </form>
+                    
+                    <form>
+                        <input type="button" value="Delete Profile" onclick="window.location.href='deletedevprof.php'" />
+                    </form>
 
 
                 </div>
@@ -62,6 +67,12 @@
                     <div class="profile-work">
                         <p>SKILLS</p>
                         <?=$row['skills'] ?>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>PROGRAMMING LANG</p>
+                        <?=$row['programming_languages'] ?>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -149,12 +160,7 @@
                                     <p><?=$row['field'] ?></p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
