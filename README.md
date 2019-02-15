@@ -1,4 +1,4 @@
-<h1># SE2018G01</h1>
+<h1># SE2018G01 (Service Advertising Website)</h1>
 <h2>Team Members</h2>
     <ul>
       <li>Ahmed Abdalla</li>
